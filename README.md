@@ -1,8 +1,31 @@
-# aws_iot_demo
+# aws-iot-console
+
 
 ## Project setup
 ```
 yarn install
+```
+
+```
+amplify configure
+```
+
+```
+amplify init
+```
+
+```
+amplify add auth #to awscloudformation
+
+```
+
+```
+amplify status
+
+```
+
+```
+amplify push
 ```
 
 ### Compiles and hot-reloads for development

@@ -1,4 +1,26 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router/router';
+import store from './store/store';
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+import '@aws-amplify/ui-vue';
+import vuetify from './plugins/vuetify';
 
-createApp(App).mount('#app')
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
+
+Amplify.configure(awsconfig);
+
+Vue.config.productionTip = false;
+
+Vue.config.ignoredElements = [/amplify-\w*/];
+
+new Vue({
+  router,
+  store,
+  vuetify,
+  created: () => {
+    store.dispatch('setDashboards');
+  },
+  render: h => h(App)
+}).$mount('#app');

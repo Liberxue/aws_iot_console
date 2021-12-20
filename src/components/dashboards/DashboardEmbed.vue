@@ -25,7 +25,8 @@ export default {
   },
   computed: {
     dashData () {
-      const link = 'https://iot.app.initialstate.com/embed/#/' + this.type + '/' + this.dashId;
+      // const link = 'https://iot.app.initialstate.com/embed/#/' + this.type + '/' + this.dashId;
+      const link = 'https://cloudwatch.amazonaws.com/dashboard.html?dashboard=iot-dashboard&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTM5MDMxODQ5NTczNSIsIlUiOiJ1cy1lYXN0LTFfWTBPUGhqV0JnIiwiQyI6IjRuZWc0OGVwdGJwbGo3ZmtzMDZmM205ZXByIiwiSSI6InVzLWVhc3QtMTo1Y2IwZDEzZS01NTFlLTRkYWUtYmY2Yy01YjdmZGE1OWQ4MjYiLCJNIjoiUHVibGljIn0=';
       return link;
     }
   }

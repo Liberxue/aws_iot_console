@@ -20,7 +20,6 @@
 <script>
 
 import AddDashboardForm from '@/components/dashboards/AddDashboardForm.vue';
-  
 export default {
   name: 'AddDashboardModal',
   props: {

@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "awsiotconsolec4993dfb": {}
+      },
+      "function": {
+        "awsiotconsole021e6ef2": {
+          "dev": "dev",
+          "secretsPathAmplifyAppId": "dt6zmcoso9tte"
+        }
       }
     }
   }

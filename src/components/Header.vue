@@ -100,4 +100,12 @@ button:active {
   outline-width: 1;
   outline-color: white;
 }
+.primary{
+  height: 65px !important;
+  width: 100%;
+}
+.v-toolbar {
+    box-shadow: none  !important;
+}
+
 </style>

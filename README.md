@@ -27,7 +27,28 @@ amplify status
 ```
 amplify push
 ```
+### REST API
 
+```
+amplify pull --appId dt6zmcoso9tte --envName dev
+```
+
+```
+amplify add api
+```
+
+### analytics
+
+```
+amplify pull --appId dt6zmcoso9tte --envName dev
+```
+```
+amplify add analytics
+```
+### Cognito Lambda
+```
+amplify auth console # User Pool
+```
 ### Compiles and hot-reloads for development
 ```
 yarn serve

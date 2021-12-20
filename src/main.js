@@ -6,13 +6,19 @@ import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import '@aws-amplify/ui-vue';
 import vuetify from './plugins/vuetify';
-
+import {
+  applyPolyfills,
+  defineCustomElements
+} from '@aws-amplify/ui-components/loader';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 Amplify.configure(awsconfig);
 
 Vue.config.productionTip = false;
 
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
 Vue.config.ignoredElements = [/amplify-\w*/];
 
 new Vue({

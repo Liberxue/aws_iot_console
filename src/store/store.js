@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import { API } from 'aws-amplify';
-
+import { DataStore } from '@aws-amplify/datastore';
+import { ThingModel } from '../models/ThingModel';
 Vue.use(Vuex);
 
 const getInitialState = () => {
@@ -142,6 +143,19 @@ const mutations = {
     Object.assign(state, getInitialState());
   }
 };
+
+/* Models in DataStore are immutable. To update a record you must use the copyOf function
+ to apply updates to the item’s fields rather than mutating the instance directly */
+// eslint-disable-next-line no-undef
+await DataStore.save(ThingModel.copyOf(CURRENT_ITEM, item => {
+  // Update the values on {item} variable to update DataStore entry
+}));
+
+const modelToDelete = await DataStore.query(ThingModel, 123456789);
+DataStore.delete(modelToDelete);
+
+const models = await DataStore.query(ThingModel);
+console.log(models);
 
 export default new Vuex.Store({
   state,

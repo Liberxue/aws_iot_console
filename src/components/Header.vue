@@ -4,11 +4,11 @@
     <v-app-bar v-if="windowWidth >= 700" prominent dense app class="primary">
       <v-container v-resize="onResize" class="d-flex align-center justify-space-between" fluid>      
         <v-img
-          src="/images/degreesee-logo-long.svg"
-          alt="DegreeSee Logo"
+          src="@/assets/logo-icon.svg"
+          alt="Logo"
           class='desktop-logo'
-          min-width="250"
-          max-width="300"
+          min-width="80"
+          max-width="80"
         ></v-img>
         <v-layout class='routing' align-center justify-end md="6">
           <router-link to='/dashboards'>
@@ -28,8 +28,8 @@
       <v-container v-resize="onResize" class="d-flex flex-column align-center">
         <v-img
           mb-4
-          src="/images/degreesee-logo-short.svg"
-          alt="DegreeSee Logo"
+          src="@/assets/logo-icon.svg"
+          alt="Logo"
           class='mobile-logo'
         ></v-img>
         <router-link to='/dashboards'>

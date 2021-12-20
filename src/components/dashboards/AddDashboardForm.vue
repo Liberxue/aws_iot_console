@@ -5,18 +5,18 @@
       <v-form 
       id='add-dashboard-form' v-model='valid' ref="form" lazy-validation>
         <v-text-field
-        v-model='key'
-        label='dashboard key'
-        :rules="keyRules"
+        v-model='name'
+        label='iot name'
+        :rules="iotName"
         required
         ></v-text-field>
         <v-text-field
-        v-model='name'
-        label='dashboard name'
-        :rules="nameRules"
+        v-model='remark'
+        label='iot remark'
+        :rules="iotRemark"
         required
         ></v-text-field>
-          <v-btn id='dashKey' @click='addDashboard(key, name)' :disabled='!valid' color='white' outlined class='secondary'>
+          <v-btn id='dashKey' @click='addDashboard(name, remark)' :disabled='!valid' color='white' outlined class='secondary'>
             <p class="info--text mt-4 font-weight-bold">Submit</p>
           </v-btn>
       </v-form>
@@ -31,20 +31,20 @@ export default {
   name: 'AddDashboardForm',
   data () {
     return {
-      key: '',
       name: '',
-      keyRules: [
-        v => !!v || 'key is required'
-      ],
-      nameRules: [v => !!v || 'name is required'],
-      valid: false
+      remark: '',
+      iotName: [
+        v => !!v || 'name is required'
+      ]
+      // nameRules: [v => !!v || 'name is required'],
+      // valid: false
     };
   },
   methods: {
-    addDashboard (key, name) {
+    addDashboard (name, remark) {
       const dash = {
-        bucketId: key,
-        name: name
+        name: name,
+        remark: remark
       };
       createThing({
         region: 'Lorem ipsum dolor sit amet',

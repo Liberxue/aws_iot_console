@@ -174,7 +174,7 @@ async function queryeThingHistory () {
 async function queryeThing () {
   try {
     const queryeThing = await DataStore.query(ThingModel);
-    console.log(queryeThing);
+    console.log('queryeThing:', queryeThing);
   } catch (error) {
     console.log('Error retrieving queryeThing', error);
   }

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <title>DegreeSee</title>
+    <title>iot-console</title>
     <div v-if="signedIn === true" class="dash-collection-home" id='content'>
       <dash-collection></dash-collection>
     </div>
@@ -12,7 +12,7 @@ import { Auth } from 'aws-amplify';
 import DashCollection from '@/components/dashboards/DashCollection.vue';
 
 export default {
-  name: 'DegreeSeeApp',
+  name: 'iot-console',
   data () {
     return {
       user: undefined,

@@ -26,6 +26,7 @@
 
 <script>
 import { createThingAndAttachCerts } from '../../utils/iot';
+import { createThing, queryeThing } from '../../store/store';
 export default {
   name: 'AddDashboardForm',
   data () {
@@ -45,6 +46,19 @@ export default {
         bucketId: key,
         name: name
       };
+      createThing({
+        region: 'Lorem ipsum dolor sit amet',
+        thingName: 'Lorem ipsum dolor sit amet',
+        thingArn: 'Lorem ipsum dolor sit amet',
+        thingId: 'Lorem ipsum dolor sit amet',
+        PublicKey: 'Lorem ipsum dolor sit amet',
+        PrivateKey: 'Lorem ipsum dolor sit amet',
+        certificatePem: 'Lorem ipsum dolor sit amet',
+        certificateId: 'Lorem ipsum dolor sit amet',
+        certificateArn: 'Lorem ipsum dolor sit amet',
+        remark: 'Lorem ipsum dolor sit amet'
+      });
+      queryeThing();
       createThingAndAttachCerts({ iotDevice: '11:11:11:11:11:11' });
       this.$store.dispatch('addDashboard', dash);
       this.$refs.form.reset();

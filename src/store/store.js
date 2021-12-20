@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 import { API } from 'aws-amplify';
 import { DataStore } from '@aws-amplify/datastore';
-import { ThingModel } from '../models/ThingModel';
+import { ThingHistoryModel, ThingModel } from '../models/index';
 Vue.use(Vuex);
 
 const getInitialState = () => {
@@ -144,18 +144,58 @@ const mutations = {
   }
 };
 
+// create
+async function createThingHistory () {
+  await DataStore.save(
+    new ThingHistoryModel({
+      region: 'Lorem ipsum dolor sit amet',
+      thingName: 'Lorem ipsum dolor sit amet',
+      thingId: 'Lorem ipsum dolor sit amet',
+      command: 'Lorem ipsum dolor sit amet',
+      createTime: 1020
+    })
+  );
+}
+// query
+async function queryeThingHistory () {
+  const queryeThingHistory = await DataStore.query(ThingHistoryModel);
+  console.log(queryeThingHistory);
+}
+
+// query
+async function queryeThing () {
+  const queryeThing = await DataStore.query(ThingModel);
+  console.log(queryeThing);
+}
+
+// create
+async function createThing (thingModel) {
+  await DataStore.save(
+    new ThingModel({
+      region: thingModel.region,
+      thingName: thingModel.thingName,
+      thingArn: thingModel.thingArn,
+      thingId: thingModel.thingId,
+      PublicKey: thingModel.PublicKey,
+      PrivateKey: thingModel.PrivateKey,
+      certificatePem: thingModel.certificatePem,
+      certificateId: thingModel.certificateId,
+      certificateArn: thingModel.certificateArn,
+      remark: thingModel.remark
+    })
+  );
+}
+// update
 /* Models in DataStore are immutable. To update a record you must use the copyOf function
  to apply updates to the item’s fields rather than mutating the instance directly */
-// eslint-disable-next-line no-undef
-await DataStore.save(ThingModel.copyOf(CURRENT_ITEM, item => {
-  // Update the values on {item} variable to update DataStore entry
-}));
-
-const modelToDelete = await DataStore.query(ThingModel, 123456789);
-DataStore.delete(modelToDelete);
-
-const models = await DataStore.query(ThingModel);
-console.log(models);
+//  await DataStore.save(ThingModel.copyOf(CURRENT_ITEM, item => {
+//     // Update the values on {item} variable to update DataStore entry
+// }));
+// delete
+async function deleteThing () {
+  const modelToDelete = await DataStore.query(ThingModel, 123456789);
+  DataStore.delete(modelToDelete);
+}
 
 export default new Vuex.Store({
   state,
@@ -163,3 +203,11 @@ export default new Vuex.Store({
   actions,
   mutations
 });
+
+export {
+  createThingHistory,
+  queryeThingHistory,
+  queryeThing,
+  deleteThing,
+  createThing
+};

@@ -11,7 +11,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "awsIOTConsole": {
+        "awsiotconsole": {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"

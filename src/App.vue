@@ -56,7 +56,7 @@ body {
 }
 
 #app {
-  background: url('assets/bggaugefill.svg');
+  background: #FFF;
   height: 100vh;
   background-repeat: no-repeat;
   background-position: 100% 0;

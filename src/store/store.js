@@ -146,45 +146,52 @@ const mutations = {
 
 // create
 async function createThingHistory () {
-  await DataStore.save(
-    new ThingHistoryModel({
-      region: 'Lorem ipsum dolor sit amet',
-      thingName: 'Lorem ipsum dolor sit amet',
-      thingId: 'Lorem ipsum dolor sit amet',
-      command: 'Lorem ipsum dolor sit amet',
-      createTime: 1020
-    })
-  );
+  try {
+    await DataStore.save(
+      new ThingHistoryModel({
+        region: 'Lorem ipsum dolor sit amet',
+        thingName: 'Lorem ipsum dolor sit amet',
+        thingId: 'Lorem ipsum dolor sit amet',
+        command: 'Lorem ipsum dolor sit amet',
+        createTime: 1020
+      })
+    );
+  } catch (error) {
+    console.log('Error retrieving ThingHistoryModel', error);
+  }
 }
 // query
 async function queryeThingHistory () {
-  const queryeThingHistory = await DataStore.query(ThingHistoryModel);
-  console.log(queryeThingHistory);
+  try {
+    const queryeThingHistory = await DataStore.query(ThingHistoryModel);
+    console.log(queryeThingHistory);
+  } catch (error) {
+    console.log('Error retrieving queryeThingHistory', error);
+  }
 }
 
 // query
 async function queryeThing () {
-  const queryeThing = await DataStore.query(ThingModel);
-  console.log(queryeThing);
+  try {
+    const queryeThing = await DataStore.query(ThingModel);
+    console.log(queryeThing);
+  } catch (error) {
+    console.log('Error retrieving queryeThing', error);
+  }
 }
 
 // create
 async function createThing (thingModel) {
-  await DataStore.save(
-    new ThingModel({
-      region: thingModel.region,
-      thingName: thingModel.thingName,
-      thingArn: thingModel.thingArn,
-      thingId: thingModel.thingId,
-      PublicKey: thingModel.PublicKey,
-      PrivateKey: thingModel.PrivateKey,
-      certificatePem: thingModel.certificatePem,
-      certificateId: thingModel.certificateId,
-      certificateArn: thingModel.certificateArn,
-      remark: thingModel.remark
-    })
-  );
+  try {
+    await DataStore.save(
+      new ThingModel(thingModel)
+    );
+    console.log('ThingModel saved successfully!');
+  } catch (error) {
+    console.log('Error saving ThingModel', error);
+  }
 }
+
 // update
 /* Models in DataStore are immutable. To update a record you must use the copyOf function
  to apply updates to the item’s fields rather than mutating the instance directly */
@@ -193,8 +200,13 @@ async function createThing (thingModel) {
 // }));
 // delete
 async function deleteThing () {
-  const modelToDelete = await DataStore.query(ThingModel, 123456789);
-  DataStore.delete(modelToDelete);
+  try {
+    const modelToDelete = await DataStore.query(ThingModel, 123456789);
+    DataStore.delete(modelToDelete);
+    console.log('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
+  } catch (error) {
+    console.log('Error retrieving posts', error);
+  }
 }
 
 export default new Vuex.Store({

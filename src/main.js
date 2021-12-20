@@ -12,7 +12,7 @@ import {
 } from '@aws-amplify/ui-components/loader';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
-Amplify.configure(awsconfig);
+Amplify.configure(awsconfig, { ssr: true });
 
 Vue.config.productionTip = false;
 

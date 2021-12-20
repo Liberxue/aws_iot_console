@@ -1,25 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-awsiotconsole-dev-172325-authRole",
-      "UnauthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-172325-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-172325-authRole",
+      "AuthRoleName": "amplify-awsiotconsole-dev-03046-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-03046-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-03046-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-awsiotconsole-dev-172325-deployment",
-      "UnauthRoleName": "amplify-awsiotconsole-dev-172325-unauthRole",
-      "StackName": "amplify-awsiotconsole-dev-172325",
-      "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-dev-172325/2b00fcf0-5fe4-11ec-9b5f-0e14a0d8b9ad",
-      "AmplifyAppId": "dt6zmcoso9tte"
+      "DeploymentBucketName": "amplify-awsiotconsole-dev-03046-deployment",
+      "UnauthRoleName": "amplify-awsiotconsole-dev-03046-unauthRole",
+      "StackName": "amplify-awsiotconsole-dev-03046",
+      "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-dev-03046/337c7470-61b2-11ec-97f7-0e89b415ae3d",
+      "AmplifyAppId": "d5hp3iyirkbva"
     },
     "categories": {
       "auth": {
-        "awsiotconsolec4993dfb": {}
-      },
-      "function": {
-        "awsiotconsole021e6ef2": {
-          "dev": "dev",
-          "secretsPathAmplifyAppId": "dt6zmcoso9tte"
-        }
+        "awsiotconsole487f63a2": {}
       }
     }
   }

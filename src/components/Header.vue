@@ -54,9 +54,8 @@ import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 export default {
   name: "NavBar",
   data: () => ({
-    logoIcon: "@/assets/degreesee-logo-icon.png",
-    logoName: "@/assets/degreesee-logo-name.png",
-    link: "https://www.degreesee.com",
+    logoIcon: "@/assets/logo-icon.svg",
+    link: "https://console.aws.amazon.com",
     user: undefined,
     signedIn: undefined,
     authState: undefined,

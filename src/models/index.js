@@ -4,9 +4,9 @@ import { schema } from './schema';
 
 
 
-const { ThingHistoryModel, ThingModel } = initSchema(schema);
+const { ThingModel, ThingHistoryModel } = initSchema(schema);
 
 export {
-  ThingHistoryModel,
-  ThingModel
+  ThingModel,
+  ThingHistoryModel
 };

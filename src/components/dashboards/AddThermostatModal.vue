@@ -9,7 +9,7 @@
           </v-btn>
         </div>
         <div>
-          <h3 class="modal-title">Add a New Dashboard</h3>
+          <h3 class="modal-title">Add Thermostat</h3>
         </div>
         <add-dashboard-form></add-dashboard-form>
       </v-card>
@@ -19,9 +19,9 @@
     
 <script>
 
-import AddDashboardForm from '@/components/dashboards/AddDashboardForm.vue';
+import AddThermostatForm from '@/components/dashboards/AddThermostatForm.vue';
 export default {
-  name: 'AddDashboardModal',
+  name: 'AddThermostatModal',
   props: {
     value: {
       required: true
@@ -33,7 +33,7 @@ export default {
     }
   },
   components: {
-    AddDashboardForm: AddDashboardForm
+    AddDashboardForm: AddThermostatForm
   }
 };
 </script>

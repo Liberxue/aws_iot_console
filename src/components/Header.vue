@@ -12,10 +12,10 @@
         ></v-img>
         <v-layout class='routing' align-center justify-end md="6">
           <router-link to='/dashboards'>
-            <v-btn class='button' color='white' text>DASHBOARDS</v-btn>
+            <v-btn class='button' color='#EC7211' text>dashboards</v-btn>
           </router-link>
           <router-link to='/account'>
-            <v-btn class='button' color='white' text>ACCOUNT</v-btn>
+            <v-btn class='button' color='#EC7211' text>account</v-btn>
           </router-link>
           <div v-if="authState === 'signedin' || signedIn === true" text class="signout">
             <amplify-sign-out></amplify-sign-out>
@@ -33,10 +33,10 @@
           class='mobile-logo'
         ></v-img>
         <router-link to='/dashboards'>
-          <v-btn class='button' color='white' text>DASHBOARDS</v-btn>
+          <v-btn class='button' color='white' text>dashboards</v-btn>
         </router-link>
         <router-link to='/account'>
-          <v-btn class='button' color='white' text>ACCOUNT</v-btn>
+          <v-btn class='button' color='white' text>account</v-btn>
         </router-link>
         <div v-if="authState === 'signedin' || signedIn === true" text class="signout">
           <amplify-sign-out></amplify-sign-out>
@@ -103,8 +103,22 @@ button:active {
   height: 65px !important;
   width: 100%;
 }
-.v-toolbar {
+.v-application .primary {
+    font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    background-color: #fff !important;
     box-shadow: none  !important;
+    position: fixed !important;
+    z-index: 10;
+    top: 0;
+    display: block;
+    width: 100%;
+    padding: 0;
+    text-align: right;
+    -webkit-box-shadow: 0 1px 5px rgb(0 0 0 / 10%)  !important;
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .1)  !important;
+    box-shadow: 2px 2px 10px rgb(159 202 255 / 50%) !important;
+    border-radius: 0.6rem  !important;
 }
-
 </style>

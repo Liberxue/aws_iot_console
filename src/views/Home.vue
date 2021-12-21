@@ -1,15 +1,15 @@
 <template>
   <main>
     <title>iot-console</title>
-    <div v-if="signedIn === true" class="dash-collection-home" id='content'>
-      <dash-collection></dash-collection>
+    <div v-if="signedIn === true" class="thermostat-collection-home" id='content'>
+      <thermostat-collection></thermostat-collection>
     </div>
   </main>
 </template>
 
 <script>
 import { Auth } from 'aws-amplify';
-import DashCollection from '@/components/dashboards/DashCollection.vue';
+import ThermostatCollection from '@/components/dashboards/ThermostatCollection.vue';
 
 export default {
   name: 'iot-console',
@@ -21,7 +21,7 @@ export default {
     };
   },
   components: {
-    DashCollection: DashCollection
+    ThermostatCollection: ThermostatCollection
   },
   beforeCreate () {
     Auth.currentAuthenticatedUser()

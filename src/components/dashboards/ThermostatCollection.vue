@@ -1,13 +1,13 @@
 <template>
-  <div id='dash-collection-container'>
-    <v-container id=dashboard-grid-container class='dash-collection' mt-7>
+  <div id='thermostat-collection-container'>
+    <v-container id=dashboard-grid-container class='thermostat-collection' mt-7>
       <v-row>
         <v-col>
           <v-row class= "pl-5 pb-5">
-            <span class='dash-collection-title'><h2>Dashboards</h2></span>
+            <span class='thermostat-collection-title'><h2>Dashboards</h2></span>
             <v-btn
               @click='showModal'
-              class='mx-2 add-dashboard-modal-button'
+              class='mx-2 add-thermostat-modal-button'
               fab
               color='secondary'
               x-small
@@ -17,26 +17,27 @@
               mdi-plus
             </v-icon>
             </v-btn>
-            <add-dashboard-modal v-model='modalOpen'></add-dashboard-modal>
+            <add-thermostat-modal v-model='modalOpen'></add-thermostat-modal>
           </v-row>
           <v-row v-if='!dashboards'>
             <v-col>
-              <span> No dashboards to display. Please add one! </span>
+              <span> No thermostat to display. Please add one</span>
             </v-col>
           </v-row>
           <v-row v-if='dashboards'>
-            <v-col v-for="dashboard in dashboards" :key="dashboard.dashId" lg='4' md='6' s='6' xs='12' wrap id='dashboard-column'>
+            <v-col v-for="dashboard in dashboards" :key="dashboard.thingId" lg='4' md='6' s='6' xs='12' wrap id='dashboard-column'>
               <v-card class='justify-space-between mx-auto' elevation='4' outlined id='dashboard-card-container' color='primary'>
                 <v-list-item three-line elevation='4'>
                   <v-list-item-content>
                     <v-list-item-title class="info--text">
-                      <p class="font-weight-bold pl-3">{{ dashboard.name }}</p>
+                      <p class="font-weight-bold pl-3">{{ dashboard.thingName }}</p>
+                      <p class="font-weight-bold pl-3">{{ dashboard.thingId }}</p>
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-card-actions class="d-flex justify-space-between">
                   <v-btn
-                    :to="{name: 'DashboardEmbed', params: {dashId: dashboard.bucketId, type: 'tiles' }}"
+                    :to="{name: 'DashboardEmbed', params: {thingId: dashboard.thingId, type: 'tiles' }}"
                     rounded
                     text
                     color='white'
@@ -45,7 +46,7 @@
                   </v-btn>
                   
                   <v-btn
-                    :to="{name: 'DashboardEmbed', params: {dashId: dashboard.bucketId, type: 'waves' }}"
+                    :to="{name: 'DashboardEmbed', params: {thingId: dashboard.thingId, type: 'waves' }}"
                     rounded
                     text
                     color='white'
@@ -54,7 +55,7 @@
                   </v-btn>
                   
                   <v-btn
-                    :to="{name: 'DashboardEmbed', params: {dashId: dashboard.bucketId, type: 'lines' }}"
+                    :to="{name: 'DashboardEmbed', params: {thingId: dashboard.thingId, type: 'lines' }}"
                     rounded
                     text
                     color='white'
@@ -66,7 +67,7 @@
                     rounded
                     text
                     color='white'
-                    @click='deleteDashboard(dashboard.dashId)'
+                    @click='deleteThermostat(dashboard.thingId)'
                   >
                     <v-icon id='delete-btn' right>delete_forever</v-icon>
                   </v-btn>
@@ -82,10 +83,10 @@
 
 <script>
 import { mapState } from 'vuex';
-import AddDashboardModal from '@/components/dashboards/AddDashboardModal.vue';
+import AddThermostatModal from '@/components/dashboards/AddThermostatModal.vue';
 
 export default {
-  name: 'DashCollection',
+  name: 'ThermostatCollection',
   data () {
     return {
       modalOpen: false
@@ -96,8 +97,8 @@ export default {
     showModal () {
       this.modalOpen = !this.modalOpen;
     },
-    deleteDashboard: function (dashId) {
-      this.$store.dispatch('deleteDashboard', dashId);
+    deleteThermostat: function (id) {
+      this.$store.dispatch('deleteThermostat', id);
     }
   },
   computed: {
@@ -112,7 +113,7 @@ export default {
     })
   },
   components: {
-    AddDashboardModal: AddDashboardModal
+    AddThermostatModal: AddThermostatModal
   }
 };
 </script>
@@ -131,7 +132,7 @@ export default {
   font-size: 26px
 }
 
-.add-dashboard-modal-button {
+.add-thermostat-modal-button {
   border: none;
   text-align: center;
   text-decoration: none;

@@ -38,34 +38,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "publicKey": {
-                    "name": "publicKey",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "privateKey": {
-                    "name": "privateKey",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "certificatePem": {
-                    "name": "certificatePem",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "certificateId": {
-                    "name": "certificateId",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "remark": {
                     "name": "remark",
                     "isArray": false,
@@ -153,13 +125,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "untitledfield": {
-                    "name": "untitledfield",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -205,5 +170,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "4aa5142ef80319691e24ed29b816360c"
+    "version": "e503103db3d90e7b11eb86fb4bc06f98"
 };

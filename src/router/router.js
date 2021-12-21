@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import DashCollection from '@/components/dashboards/DashCollection.vue';
+import ThermostatCollection from '@/components/dashboards/ThermostatCollection.vue';
 import Account from '@/components/users/Account.vue';
 import NotFound from '../views/NotFound.vue';
 import DashboardEmbed from '@/components/dashboards/DashboardEmbed.vue';
@@ -19,8 +19,8 @@ const routes = [
   },
   {
     path: '/dashboards',
-    component: DashCollection,
-    name: 'DashCollection',
+    component: ThermostatCollection,
+    name: 'ThermostatCollection',
     props: true,
     meta: { requiresAuth: true }
   },

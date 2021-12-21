@@ -18,10 +18,6 @@ export declare class ThingModel {
   readonly thingName?: string;
   readonly thingArn?: string;
   readonly thingId?: string;
-  readonly publicKey?: string;
-  readonly privateKey?: string;
-  readonly certificatePem?: string;
-  readonly certificateId?: string;
   readonly remark?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
@@ -35,7 +31,6 @@ export declare class ThingHistoryModel {
   readonly thingName?: string;
   readonly thingId?: string;
   readonly command?: string;
-  readonly untitledfield?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<ThingHistoryModel, ThingHistoryModelMetaData>);

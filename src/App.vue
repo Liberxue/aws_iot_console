@@ -1,7 +1,7 @@
 <template>
   <v-app id="app">
     <app-header></app-header>
-    <v-main>
+    <v-main style="padding: 50px 0px 0px;">
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -56,7 +56,7 @@ body {
 }
 
 #app {
-  background: #FFF;
+  background: #fafdff;
   height: 100vh;
   background-repeat: no-repeat;
   background-position: 100% 0;
@@ -71,13 +71,20 @@ body {
 }
 
 h1, h2, h3, p, label, input {
-  font-family: 'Montserrat';
+  font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif !important;
 }
 
 /* amplify theme */
 :root {
-  --amplify-primary-color: #275ba7;
+  --amplify-primary-color: #fd9653;
   --amplify-primary-tint: #e05800;
   --amplify-primary-shade: #fd9653;
+  --sr-annote-color-0: #b4d9fb;
+  --sr-annote-color-1: #ffeb3b;
+  --sr-annote-color-2: #a2e9f2;
+  --sr-annote-color-3: #a1e0ff;
+  --sr-annote-color-4: #a8ea68;
+  --sr-annote-color-5: #ffb7da;
 }
+
 </style>

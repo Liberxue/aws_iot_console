@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { API } from 'aws-amplify';
+// import { API } from 'aws-amplify';
 import { DataStore } from '@aws-amplify/datastore';
 import { ThingHistoryModel, ThingModel } from '../models/index';
+import { createThingAndAttachCerts } from '../utils/iot';
 Vue.use(Vuex);
 
 const getInitialState = () => {
@@ -21,7 +22,6 @@ const getInitialState = () => {
 };
 
 const state = getInitialState();
-
 const getters = {
   dashKey: state => {
     return state.dashKey;
@@ -50,11 +50,10 @@ const actions = {
     commit('SET_DASH_NAME', name);
   },
   setDashboards: ({ commit }) => {
-    API.get('dashboardApi', '/dashboards', {
-      response: true
-    }).then(result => {
-      if (result.data) {
-        const dashboards = result.data.data;
+    DataStore.query(ThingModel).then(result => {
+      // console.info('ThingModel:', JSON.stringify(result));
+      if (result) {
+        const dashboards = result;
         commit('SET_DASHBOARDS', dashboards);
         return dashboards;
       }
@@ -65,44 +64,52 @@ const actions = {
   setUser: ({ commit }, user) => {
     commit('SET_USER', user);
   },
-  addDashboard: ({ commit }, dash) => {
-    if (!dash) {
+  addThermostat: ({ commit }, dash) => {
+    console.info('dash', dash);
+    if (!dash.thingName) {
       return new Error('Invalid Entry');
     }
-
-    API.post('dashboardApi', '/dashboards', {
-      body: {
-        key: dash.bucketId,
-        name: dash.name
+    const data = createThingAndAttachCerts({ thingName: dash.thingName });
+    data.then(result => {
+      console.info(result);
+      try {
+        DataStore.save(
+          new ThingModel({
+            region: 'sh',
+            thingName: dash.thingName,
+            thingArn: result.thingRes.thingArn,
+            thingId: result.thingRes.thingId,
+            remark: dash.remark
+          })
+        );
+        commit('ADD_DASHBOARD', result);
+      } catch (error) {
+        console.log('Error saving ThingModel', error);
+        return error;
       }
-    })
-      .then(result => {
-        commit('ADD_DASHBOARD', result.dashboard);
-
-        return 'success';
-      }).catch(err => {
-        return err;
-      });
+    });
   },
-  deleteDashboard: ({ commit }, dashId) => {
-    if (!dashId) {
+  deleteThermostat: ({ commit }, id) => {
+    if (!id) {
       return Promise.reject(new Error('Invalid ID'));
     }
+    commit('REMOVE_DASHBOARD_BY_ID', id);
+    return 'success';
+    // console.info('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
+    // const path = '/dashboards' + `/${dashId}`;
 
-    const path = '/dashboards' + `/${dashId}`;
+    // API.del('dashboardApi', path, {
+    //   body: {
+    //     dashId: dashId
+    //   }
+    // })
+    //   .then(result => {
+    //     commit('REMOVE_DASHBOARD_BY_ID', dashId);
 
-    API.del('dashboardApi', path, {
-      body: {
-        dashId: dashId
-      }
-    })
-      .then(result => {
-        commit('REMOVE_DASHBOARD_BY_ID', dashId);
-
-        return 'success';
-      }).catch(err => {
-        return err;
-      });
+    //     return 'success';
+    //   }).catch(err => {
+    //     return err;
+    //   });
   },
   reset: ({ commit }) => {
     commit('RESET');
@@ -117,6 +124,7 @@ const mutations = {
     state.dashName = name;
   },
   SET_DASHBOARDS: (state, dashboards) => {
+    console.info('dashboards:', dashboards);
     state.dashboards = dashboards;
   },
   SET_USER: (state, user) => {
@@ -129,14 +137,14 @@ const mutations = {
     }
     state.dashboards.push(dash);
   },
-  REMOVE_DASHBOARD_BY_ID: (state, dashId) => {
-    if (!dashId) {
+  REMOVE_DASHBOARD_BY_ID: (state, id) => {
+    if (!id) {
       return new Error('Invalid ID');
     }
-    const idx = state.dashboards.findIndex(x => dashId !== null && x.dashId === dashId);
-
-    if (idx >= 0) {
-      state.dashboards.splice(idx, 1);
+    try {
+      deleteThing(id);
+    } catch (error) {
+      console.error('Error retrieving posts', error);
     }
   },
   RESET: (state) => {
@@ -157,41 +165,28 @@ async function createThingHistory () {
       })
     );
   } catch (error) {
-    console.log('Error retrieving ThingHistoryModel', error);
+    console.error('Error retrieving ThingHistoryModel', error);
   }
 }
 // query
 async function queryeThingHistory () {
   try {
     const queryeThingHistory = await DataStore.query(ThingHistoryModel);
-    console.log(queryeThingHistory);
+    console.info(queryeThingHistory);
   } catch (error) {
-    console.log('Error retrieving queryeThingHistory', error);
+    console.error('Error retrieving queryeThingHistory', error);
   }
 }
 
 // query
-async function queryeThing () {
-  try {
-    const queryeThing = await DataStore.query(ThingModel);
-    console.log('queryeThing:', queryeThing);
-  } catch (error) {
-    console.log('Error retrieving queryeThing', error);
-  }
-}
-
-// create
-async function createThing (thingModel) {
-  try {
-    await DataStore.save(
-      new ThingModel(thingModel)
-    );
-    console.log('ThingModel saved successfully!');
-  } catch (error) {
-    console.log('Error saving ThingModel', error);
-  }
-}
-
+// async function queryeThing () {
+//   try {
+//     const queryeThing = await DataStore.query(ThingModel);
+//     console.info('queryeThing:', queryeThing);
+//   } catch (error) {
+//     console.error('Error retrieving queryeThing', error);
+//   }
+// }
 // update
 /* Models in DataStore are immutable. To update a record you must use the copyOf function
  to apply updates to the item’s fields rather than mutating the instance directly */
@@ -199,13 +194,13 @@ async function createThing (thingModel) {
 //     // Update the values on {item} variable to update DataStore entry
 // }));
 // delete
-async function deleteThing () {
+async function deleteThing (id) {
   try {
-    const modelToDelete = await DataStore.query(ThingModel, 123456789);
+    const modelToDelete = await DataStore.query(ThingModel, { id: id });
     DataStore.delete(modelToDelete);
-    console.log('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
+    console.info('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
   } catch (error) {
-    console.log('Error retrieving posts', error);
+    console.error('Error retrieving posts', error);
   }
 }
 
@@ -219,7 +214,5 @@ export default new Vuex.Store({
 export {
   createThingHistory,
   queryeThingHistory,
-  queryeThing,
-  deleteThing,
-  createThing
+  deleteThing
 };

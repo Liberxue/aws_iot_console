@@ -7,8 +7,8 @@
           src="@/assets/logo-icon.svg"
           alt="Logo"
           class='desktop-logo'
-          min-width="80"
-          max-width="80"
+          min-width="64"
+          max-width="64"
         ></v-img>
         <v-layout class='routing' align-center justify-end md="6">
           <router-link to='/dashboards'>
@@ -17,6 +17,10 @@
           <router-link to='/account'>
             <v-btn class='button' color='#EC7211' text>account</v-btn>
           </router-link>
+          <v-divider
+            class="mx-4"
+            vertical
+          ></v-divider>
           <div v-if="authState === 'signedin' || signedIn === true" text class="signout">
             <amplify-sign-out></amplify-sign-out>
           </div>
@@ -102,6 +106,9 @@ button:active {
 .primary{
   height: 65px !important;
   width: 100%;
+}
+.container {
+  padding: 0px !important;
 }
 .v-application .primary {
     font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif !important;

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "paths": {
+    "/thermostat/list": {
+      "name": "/thermostat/list",
+      "lambdaFunction": "consoleToMQTT",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    },
+    "/thermostatHistoryLog": {
+      "name": "/thermostatHistoryLog",
+      "lambdaFunction": "consoleToMQTT",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}

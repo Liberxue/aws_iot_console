@@ -1,8 +1,7 @@
 
 <template>
-  <div class="modal add-dash-modal" v-show='value'>
-    <v-container>
-      <v-card class="pa-4 d-flex flex-column justify-start">
+<v-dialog max-width="500" v-model="value" persistent>
+      <v-card class="pa-4 d-flex flex-column justify-end">
         <div class='modal-close'>
           <v-btn @click.prevent='close' class='modal-close-btn' small icon color='grey darken-1'>
             <v-icon>clear</v-icon>
@@ -13,8 +12,7 @@
         </div>
         <add-dashboard-form></add-dashboard-form>
       </v-card>
-    </v-container>
-  </div>
+</v-dialog>
 </template>
     
 <script>

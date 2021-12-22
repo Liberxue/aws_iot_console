@@ -196,9 +196,9 @@ async function queryeThingHistory () {
 // delete
 async function deleteThing (id) {
   try {
-    const modelToDelete = await DataStore.query(ThingModel, { id: id });
+    const modelToDelete = await DataStore.query(ThingModel, id);
     DataStore.delete(modelToDelete);
-    console.info('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
+    console.info('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, id));
   } catch (error) {
     console.error('Error retrieving posts', error);
   }

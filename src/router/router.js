@@ -25,7 +25,7 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/dashboards/:dashId',
+    path: '/dashboards/:id',
     name: 'DashboardEmbed',
     component: DashboardEmbed,
     props: true,

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "auth": {
+      "awsiotconsole487f63a2": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

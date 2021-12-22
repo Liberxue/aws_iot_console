@@ -9,11 +9,18 @@
       "UnauthRoleName": "amplify-awsiotconsole-dev-03046-unauthRole",
       "StackName": "amplify-awsiotconsole-dev-03046",
       "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-dev-03046/337c7470-61b2-11ec-97f7-0e89b415ae3d",
-      "AmplifyAppId": "d5hp3iyirkbva"
+      "AmplifyAppId": "d5hp3iyirkbva",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-awsiotconsole-dev-03046-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "awsiotconsole487f63a2": {}
+      },
+      "function": {
+        "consoleToMQTT": {
+          "deploymentBucketName": "amplify-awsiotconsole-dev-03046-deployment",
+          "s3Key": "amplify-builds/consoleToMQTT-3257637745724277784b-build.zip"
+        }
       }
     }
   }

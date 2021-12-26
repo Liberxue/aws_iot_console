@@ -232,9 +232,8 @@ export default {
 <style scoped>
 
 #dashboard-card-container {
-  min-width: 300px;
-  max-width: 344px;
-
+  min-width: 300px !important;
+  max-width: 900px !important;
 }
 
 #delete-btn {
@@ -309,9 +308,9 @@ b, strong {
     caret-color: #f5f5f5 !important;
 }
 
-.col-lg-4 {
+/* .col-lg-4 {
     flex: 0 0 0% !important;
     max-width: 33% !important;
     min-width: 33% !important;
-}
+} */
 </style>

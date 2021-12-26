@@ -40,6 +40,10 @@ export default {
   width: 100%;
 }
 
+.cwdb-dashboard-content {
+    background-color: #fafdff  !important;
+    border-top: 1px solid #fff  !important;
+}
 .dashboard-iframe {
   width: 90%;
   height: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div id='thermostat-collection-container'>
-    <v-dialog max-width="500" v-model="value" persistent>
+    <v-dialog max-width="500" v-model="detailOpen" persistent>
       <v-card class="pa-4 d-flex flex-column justify-end">
         <div class='modal-close'>
           <v-btn @click.prevent='close' class='modal-close-btn' small icon color='grey darken-1'>
@@ -11,6 +11,19 @@
           <h3 class="modal-title">Detail Thermostat</h3>
         </div>
         <detail-thermostat-form></detail-thermostat-form>
+      </v-card>
+    </v-dialog>
+    <v-dialog max-width="500" v-model="updateOpen" persistent>
+      <v-card class="pa-4 d-flex flex-column justify-end">
+        <div class='modal-close'>
+          <v-btn @click.prevent='closeUpdate' class='modal-close-btn' small icon color='grey darken-1'>
+            <v-icon>clear</v-icon>
+          </v-btn>
+        </div>
+        <div>
+          <h3 class="modal-title">Update Thermostat</h3>
+        </div>
+        <update-thermostat-form></update-thermostat-form>
       </v-card>
     </v-dialog>
     <v-container id=dashboard-grid-container class='thermostat-collection' mt-7>
@@ -135,19 +148,17 @@
 import { mapState } from 'vuex';
 import AddThermostatModal from '@/components/dashboards/AddThermostatModal.vue';
 import DetailThermostatForm from '@/components/dashboards/DetailThermostatForm.vue';
+import UpdateThermostatForm from '@/components/dashboards/UpdateThermostatForm.vue';
 
 const exhale = ms =>
   new Promise(resolve => setTimeout(resolve, ms));
 export default {
   name: 'ThermostatCollection',
-  props: {
-    value: {
-      required: true
-    }
-  },
   data () {
     return {
       modalOpen: false,
+      detailOpen: false,
+      updateOpen: false,
       checking: false,
       reloads: []
     };
@@ -157,7 +168,10 @@ export default {
   },
   methods: {
     close () {
-      this.$emit('input', !this.value);
+      this.detailOpen = !this.detailOpen;
+    },
+    closeUpdate () {
+      this.updateOpen = !this.updateOpen;
     },
     showModal () {
       this.modalOpen = !this.modalOpen;
@@ -168,11 +182,12 @@ export default {
     },
     updateThermostat: function (id) {
       console.info('updateThermostat');
+      console.log(id);
+      this.updateOpen = !this.updateOpen;
     },
     detailThermostat: function (id) {
-      this.modalOpen = !this.modalOpen;
-      this.$emit('input', !this.value);
-      console.info('detailThermostat');
+      console.log(id);
+      this.detailOpen = !this.detailOpen;
     },
     reload () {
       return Math.ceil(Math.random() * (120 - 80) + 80);
@@ -188,7 +203,6 @@ export default {
     }
   },
   computed: {
-    DetailThermostatForm: DetailThermostatForm,
     ...mapState({
       
       dashboards (state) {
@@ -206,7 +220,11 @@ export default {
       return Math.ceil(sum / length);
     }
   },
-  components: { AddThermostatModal: AddThermostatModal }
+  components: {
+    AddThermostatModal: AddThermostatModal,
+    DetailThermostatForm: DetailThermostatForm,
+    UpdateThermostatForm: UpdateThermostatForm
+  }
 };
 </script>
 
@@ -289,5 +307,11 @@ b, strong {
 .v-application .indigo--text {
     color: #c5c5c5 !important;
     caret-color: #f5f5f5 !important;
+}
+
+.col-lg-4 {
+    flex: 0 0 0% !important;
+    max-width: 33% !important;
+    min-width: 33% !important;
 }
 </style>

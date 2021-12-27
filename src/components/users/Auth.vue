@@ -58,5 +58,7 @@ amplify-authenticator {
   --container-height: 0;
     padding: 2em;
 }
-
+.toast{
+  position: static !important;
+}
 </style>

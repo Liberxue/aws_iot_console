@@ -58,5 +58,12 @@ export type AmplifyDependentResourcesAttributes = {
             "SortKeyType": "string",
             "Region": "string"
         }
+    },
+    "api": {
+        "ConsoleRESTAPI": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
     }
 }

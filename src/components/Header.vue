@@ -10,7 +10,7 @@
           min-width="64"
           max-width="64"
         ></v-img>
-        <v-layout class='routing' align-center justify-end md="6">
+        <v-layout v-if="authState === 'signedin' || signedIn === true" class='routing' align-center justify-end md="6">
           <router-link to='/dashboards'>
             <v-btn class='button' color='#EC7211' text>dashboards</v-btn>
           </router-link>

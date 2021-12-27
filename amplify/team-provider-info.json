@@ -39,5 +39,43 @@
         }
       }
     }
+  },
+  "pre": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsiotconsole-pre-14127-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-pre-14127-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-pre-14127-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-awsiotconsole-pre-14127-deployment",
+      "UnauthRoleName": "amplify-awsiotconsole-pre-14127-unauthRole",
+      "StackName": "amplify-awsiotconsole-pre-14127",
+      "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-pre-14127/3c18a6f0-673c-11ec-af08-125f36841fd5",
+      "AmplifyAppId": "d1lpusu9tmq0eu"
+    },
+    "categories": {
+      "function": {
+        "lambdaThingTriggerf368232f": {
+          "deploymentBucketName": "amplify-awsiotconsole-pre-14127-deployment",
+          "s3Key": "amplify-builds/lambdaThingTriggerf368232f-68385875526d716c774c-build.zip"
+        },
+        "lambdaThing": {
+          "deploymentBucketName": "amplify-awsiotconsole-pre-14127-deployment",
+          "s3Key": "amplify-builds/lambdaThing-4c712b3231526e59396e-build.zip"
+        },
+        "ThingLogModelTrigger6fe99b16": {
+          "deploymentBucketName": "amplify-awsiotconsole-pre-14127-deployment",
+          "s3Key": "amplify-builds/ThingLogModelTrigger6fe99b16-7575344f46354e434243-build.zip"
+        },
+        "lambdaThingLog": {
+          "environment": "process.env.ENV",
+          "region": "process.env.REGION",
+          "apiBetatestGraphQlapiIdOutput": "process.env.API_BETATEST_GRAPHQLAPIIDOUTPUT",
+          "apiBetatestGraphQlapiEndpointOutput": " process.env.API_BETATEST_GRAPHQLAPIENDPOINTOUTPUT",
+          "secretsPathAmplifyAppId": "d1lpusu9tmq0eu",
+          "deploymentBucketName": "amplify-awsiotconsole-pre-14127-deployment",
+          "s3Key": "amplify-builds/lambdaThingLog-754363744a7359387868-build.zip"
+        }
+      }
+    }
   }
 }

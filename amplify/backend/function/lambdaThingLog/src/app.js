@@ -74,6 +74,21 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Headers', '*');
   next();
 });
+// getUserId
+const getUserId = (req) => {
+  try {
+    console.log('getting userId');
+    console.log({ requestContext: req.apiGateway.event.requestContext });
+    const IDP_REGEX = /.*\/.*,(.*)\/(.*):CognitoSignIn:(.*)/;
+    const authProvider = req.apiGateway.event.requestContext.identity.cognitoAuthenticationProvider;
+    const [, , , userId] = authProvider.match(IDP_REGEX);
+    console.log('userId: ', userId);
+    return userId;
+  } catch (err) {
+    console.log('unable to retrieve userId: ', err);
+    return UNAUTH;
+  }
+};
 
 // convert url string param to expected Type
 const convertUrlType = (param, type) => {
@@ -94,9 +109,10 @@ app.get(path + hashKeyPath, function (req, res) {
   condition[partitionKeyName] = {
     ComparisonOperator: 'EQ'
   };
+  const userId = getUserId(req);
 
-  if (userIdPresent && req.apiGateway) {
-    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+  if (userId && req.apiGateway) {
+    condition[partitionKeyName]['AttributeValueList'] = [userId || UNAUTH];
   } else {
     try {
       condition[partitionKeyName]['AttributeValueList'] = [convertUrlType(req.params[partitionKeyName], partitionKeyType)];
@@ -105,6 +121,16 @@ app.get(path + hashKeyPath, function (req, res) {
       res.json({ error: 'Wrong column type ' + err });
     }
   }
+  // if (userIdPresent && req.apiGateway) {
+  //   condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH];
+  // } else {
+  //   try {
+  //     condition[partitionKeyName]['AttributeValueList'] = [convertUrlType(req.params[partitionKeyName], partitionKeyType)];
+  //   } catch (err) {
+  //     res.statusCode = 500;
+  //     res.json({ error: 'Wrong column type ' + err });
+  //   }
+  // }
 
   const queryParams = {
     TableName: tableName,

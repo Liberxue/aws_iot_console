@@ -95,21 +95,6 @@ const actions = {
     }
     commit('REMOVE_DASHBOARD_BY_ID', id);
     return 'success';
-    // console.info('modelToDelete retrieved successfully!', JSON.stringify(modelToDelete, null, 2));
-    // const path = '/dashboards' + `/${dashId}`;
-
-    // API.del('dashboardApi', path, {
-    //   body: {
-    //     dashId: dashId
-    //   }
-    // })
-    //   .then(result => {
-    //     commit('REMOVE_DASHBOARD_BY_ID', dashId);
-
-    //     return 'success';
-    //   }).catch(err => {
-    //     return err;
-    //   });
   },
   reset: ({ commit }) => {
     commit('RESET');

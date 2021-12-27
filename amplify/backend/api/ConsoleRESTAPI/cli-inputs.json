@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "paths": {
+    "/Thing": {
+      "name": "/Thing",
+      "lambdaFunction": "lambdaThing",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    },
+    "/ThingLog": {
+      "name": "/ThingLog",
+      "lambdaFunction": "lambdaThingLog",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read"
+        ]
+      }
+    }
+  }
+}

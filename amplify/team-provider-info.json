@@ -1,25 +1,41 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-awsiotconsole-dev-03046-authRole",
-      "UnauthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-03046-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-03046-authRole",
+      "AuthRoleName": "amplify-awsiotconsole-dev-225428-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-225428-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390318495735:role/amplify-awsiotconsole-dev-225428-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-awsiotconsole-dev-03046-deployment",
-      "UnauthRoleName": "amplify-awsiotconsole-dev-03046-unauthRole",
-      "StackName": "amplify-awsiotconsole-dev-03046",
-      "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-dev-03046/337c7470-61b2-11ec-97f7-0e89b415ae3d",
-      "AmplifyAppId": "d5hp3iyirkbva",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-awsiotconsole-dev-03046-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "DeploymentBucketName": "amplify-awsiotconsole-dev-225428-deployment",
+      "UnauthRoleName": "amplify-awsiotconsole-dev-225428-unauthRole",
+      "StackName": "amplify-awsiotconsole-dev-225428",
+      "StackId": "arn:aws:cloudformation:us-east-1:390318495735:stack/amplify-awsiotconsole-dev-225428/e9925e10-6724-11ec-b83d-0a6f92fa1643",
+      "AmplifyAppId": "dn11sjojs1537"
     },
     "categories": {
       "auth": {
-        "awsiotconsole487f63a2": {}
+        "awsiotconsoleb179285c": {}
       },
       "function": {
-        "consoleToMQTT": {
-          "deploymentBucketName": "amplify-awsiotconsole-dev-03046-deployment",
-          "s3Key": "amplify-builds/consoleToMQTT-3257637745724277784b-build.zip"
+        "lambdaThingLog": {
+          "environment": "process.env.ENV",
+          "region": "process.env.REGION",
+          "apiBetatestGraphQlapiIdOutput": "process.env.API_BETATEST_GRAPHQLAPIIDOUTPUT",
+          "apiBetatestGraphQlapiEndpointOutput": " process.env.API_BETATEST_GRAPHQLAPIENDPOINTOUTPUT",
+          "secretsPathAmplifyAppId": "dn11sjojs1537",
+          "deploymentBucketName": "amplify-awsiotconsole-dev-225428-deployment",
+          "s3Key": "amplify-builds/lambdaThingLog-566e4d4956487166694c-build.zip"
+        },
+        "ThingLogModelTrigger6fe99b16": {
+          "deploymentBucketName": "amplify-awsiotconsole-dev-225428-deployment",
+          "s3Key": "amplify-builds/ThingLogModelTrigger6fe99b16-7575344f46354e434243-build.zip"
+        },
+        "lambdaThingTriggerf368232f": {
+          "deploymentBucketName": "amplify-awsiotconsole-dev-225428-deployment",
+          "s3Key": "amplify-builds/lambdaThingTriggerf368232f-68385875526d716c774c-build.zip"
+        },
+        "lambdaThing": {
+          "deploymentBucketName": "amplify-awsiotconsole-dev-225428-deployment",
+          "s3Key": "amplify-builds/lambdaThing-4c712b3231526e59396e-build.zip"
         }
       }
     }

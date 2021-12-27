@@ -1,0 +1,16 @@
+{
+  "resourceName": "ThingLogModel",
+  "tableName": "ThingLogModel",
+  "partitionKey": {
+    "fieldName": "thingName",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "thingId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "ThingLogModelTrigger6fe99b16"
+  ]
+}

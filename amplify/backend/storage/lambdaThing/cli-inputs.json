@@ -1,0 +1,24 @@
+{
+  "resourceName": "lambdaThing",
+  "tableName": "lambdaThing",
+  "partitionKey": {
+    "fieldName": "thingId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "ThingModel",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "thingId",
+      "partitionKey": {
+        "fieldName": "ThingModel",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": [
+    "lambdaThingTriggerf368232f"
+  ]
+}

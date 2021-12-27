@@ -2,65 +2,73 @@
 
 
 ## Project setup
-```
+
+```shell
 yarn install
 ```
 
-```
+```shell
 amplify configure
 ```
 
-```
+```shell
 amplify init
 ```
 
+```shell
+amplify add auth
 ```
-amplify add auth #to awscloudformation
+
+### [REST API](https://docs.amplify.aws/lib/restapi/getting-started/q/platform/js/#configure-your-application)
+
+```shell
+amplify add api
+```
+
+### [analytics](https://docs.amplify.aws/lib/analytics/getting-started/q/platform/js/#configure-your-app)
+
+```shell
+amplify add analytics
+```
+### [Cognito Lambda](https://docs.amplify.aws/cli/function/#function-templates)
+
+#### env 
+```shell
+var environment = process.env.ENV
+var region = process.env.REGION
+var apiBetatestGraphQLAPIIdOutput = process.env.API_BETATEST_GRAPHQLAPIIDOUTPUT
+var apiBetatestGraphQLAPIEndpointOutput = process.env.API_BETATEST_GRAPHQLAPIENDPOINTOUTPUT
+```
+
+### [Authentication](https://docs.amplify.aws/cli/auth/overview/)
+
+```shell
+amplify auth console
 
 ```
 
-```
+
+```shell
 amplify status
 
 ```
 
-```
+```shell
 amplify push
 ```
-### REST API
 
-```
-amplify pull --appId dt6zmcoso9tte --envName dev
-```
-
-```
-amplify add api
-```
-
-### analytics
-
-```
-amplify pull --appId dt6zmcoso9tte --envName dev
-```
-```
-amplify add analytics
-```
-### Cognito Lambda
-```
-amplify auth console # User Pool
-```
 ### Compiles and hot-reloads for development
-```
+```shell
 yarn serve
 ```
 
 ### Compiles and minifies for production
-```
+```shell
 yarn build
 ```
 
 ### Lints and fixes files
-```
+```shell
 yarn lint
 ```
 

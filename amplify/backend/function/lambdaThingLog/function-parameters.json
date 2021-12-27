@@ -1,0 +1,68 @@
+{
+  "permissions": {
+    "auth": {
+      "awsiotconsoleb179285c": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "function": {
+      "lambdaThingTriggerf368232f": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "lambdaThing": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "ThingLogModelTrigger6fe99b16": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "lambdaThing": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "ThingLogModel": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "environment",
+      "environmentVariableName": "environment"
+    },
+    {
+      "cloudFormationParameterName": "region",
+      "environmentVariableName": "region"
+    },
+    {
+      "cloudFormationParameterName": "apiBetatestGraphQlapiIdOutput",
+      "environmentVariableName": "apiBetatestGraphQLAPIIdOutput"
+    },
+    {
+      "cloudFormationParameterName": "apiBetatestGraphQlapiEndpointOutput",
+      "environmentVariableName": "apiBetatestGraphQLAPIEndpointOutput"
+    }
+  ],
+  "secretNames": [
+    "n"
+  ]
+}

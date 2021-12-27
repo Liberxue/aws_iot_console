@@ -1,23 +1,32 @@
 # aws-iot-console
 
+![login](./pic/login.png)
+
+![dashboard](./pic/dashboard.png)
+
+![dashboardTail](./pic/dashboard_detail.png)
 
 ## Project setup
 
 ```shell
-yarn install
+    git clon https://github.com/Liberxue/aws-iot-console.git
+```
+```shell
+    cd aws-iot-console
 ```
 
 ```shell
-amplify configure
+    yarn install
 ```
 
 ```shell
-amplify init
+    amplify configure
 ```
 
 ```shell
-amplify add auth
+    amplify init
 ```
+
 
 ### [REST API](https://docs.amplify.aws/lib/restapi/getting-started/q/platform/js/#configure-your-application)
 
@@ -42,34 +51,47 @@ var apiBetatestGraphQLAPIEndpointOutput = process.env.API_BETATEST_GRAPHQLAPIEND
 
 ### [Authentication](https://docs.amplify.aws/cli/auth/overview/)
 
+
 ```shell
-amplify auth console
+    amplify add auth
+```
+
+```shell
+    amplify auth console
 
 ```
 
 
 ```shell
-amplify status
+    amplify status
 
 ```
 
 ```shell
-amplify push
+    amplify push
 ```
 
 ### Compiles and hot-reloads for development
 ```shell
-yarn serve
+    yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```shell
-yarn build
+    yarn build
 ```
 
 ### Lints and fixes files
 ```shell
-yarn lint
+    yarn lint
+```
+
+
+### Destroy
+#### Deletes all of the resources tied to the project from the cloud.   
+```shell
+    amplify delete
 ```
 
 ### Customize configuration
